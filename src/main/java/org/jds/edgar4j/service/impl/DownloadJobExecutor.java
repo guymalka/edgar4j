@@ -40,15 +40,23 @@ public class DownloadJobExecutor {
 
         try {
             switch (request.getType()) {
-                case TICKERS_ALL -> downloadTickersService.downloadTickers();
-                case TICKERS_NYSE, TICKERS_NASDAQ -> downloadTickersService.downloadTickersExchanges();
-                case TICKERS_MF -> downloadTickersService.downloadTickersMFs();
-                case SUBMISSIONS -> {
+                case TICKERS_ALL:
+                    downloadTickersService.downloadTickers();
+                    break;
+                case TICKERS_NYSE:
+                case TICKERS_NASDAQ:
+                    downloadTickersService.downloadTickersExchanges();
+                    break;
+                case TICKERS_MF:
+                    downloadTickersService.downloadTickersMFs();
+                    break;
+                case SUBMISSIONS:
                     if (request.getCik() != null) {
                         downloadSubmissionsService.downloadSubmissions(request.getCik());
                     }
-                }
-                default -> log.warn("Unsupported download type: {}", request.getType());
+                    break;
+                default:
+                    log.warn("Unsupported download type: {}", request.getType());
             }
 
             markCompleted(jobId);

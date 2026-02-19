@@ -12,11 +12,12 @@ server:
   port: 8080
 
 spring:
+  cloud:
+    config:
+      enabled: false
   data:
     mongodb:
-      uri: ${MONGODB_URI}
-      database: ${MONGODB_DATABASE:edgar}
-      auto-index-creation: ${MONGODB_AUTO_INDEX_CREATION:true}
+      uri: mongodb://admin:admin123@mongodb:27017/edgar?authSource=admin
 
 edgar4j:
   sec:

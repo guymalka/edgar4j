@@ -112,27 +112,26 @@ public class Form4Transaction {
     public String getTransactionCodeDescription() {
         if (transactionCode == null) return "Unknown";
 
-        return switch (transactionCode.toUpperCase()) {
-            case "P" -> "Open Market Purchase";
-            case "S" -> "Open Market Sale";
-            case "A" -> "Grant/Award (Rule 16b-3)";
-            case "D" -> "Disposition to Issuer";
-            case "F" -> "Payment via Withholding";
-            case "I" -> "Discretionary Transaction";
-            case "M" -> "Exercise of Derivative";
-            case "C" -> "Conversion of Derivative";
-            case "E" -> "Expiration (short position)";
-            case "H" -> "Expiration (long position)";
-            case "O" -> "Exercise (out-of-money)";
-            case "X" -> "Exercise (in-the-money)";
-            case "G" -> "Gift";
-            case "L" -> "Small Acquisition (Rule 16a-6)";
-            case "W" -> "Acquisition/Disposition by Will/Laws of Descent";
-            case "Z" -> "Deposit/Withdrawal from Voting Trust";
-            case "J" -> "Other";
-            case "K" -> "Equity Swap Transaction";
-            case "U" -> "Disposition due to Tender of Shares";
-            default -> "Code: " + transactionCode;
-        };
+        String code = transactionCode.toUpperCase();
+        if (code.equals("P")) return "Open Market Purchase";
+        if (code.equals("S")) return "Open Market Sale";
+        if (code.equals("A")) return "Grant/Award (Rule 16b-3)";
+        if (code.equals("D")) return "Disposition to Issuer";
+        if (code.equals("F")) return "Payment via Withholding";
+        if (code.equals("I")) return "Discretionary Transaction";
+        if (code.equals("M")) return "Exercise of Derivative";
+        if (code.equals("C")) return "Conversion of Derivative";
+        if (code.equals("E")) return "Expiration (short position)";
+        if (code.equals("H")) return "Expiration (long position)";
+        if (code.equals("O")) return "Exercise (out-of-money)";
+        if (code.equals("X")) return "Exercise (in-the-money)";
+        if (code.equals("G")) return "Gift";
+        if (code.equals("L")) return "Small Acquisition (Rule 16a-6)";
+        if (code.equals("W")) return "Acquisition/Disposition by Will/Laws of Descent";
+        if (code.equals("Z")) return "Deposit/Withdrawal from Voting Trust";
+        if (code.equals("J")) return "Other";
+        if (code.equals("K")) return "Equity Swap Transaction";
+        if (code.equals("U")) return "Disposition due to Tender of Shares";
+        return "Code: " + transactionCode;
     }
 }

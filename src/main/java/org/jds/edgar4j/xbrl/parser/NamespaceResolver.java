@@ -341,13 +341,34 @@ public class NamespaceResolver {
         return result;
     }
 
-    /**
-     * Represents parsed QName parts.
-     */
-    public record QNameParts(String prefix, String namespaceUri, String localName) {
+    public static class QNameParts {
+        private final String prefix;
+        private final String namespaceUri;
+        private final String localName;
+
+        public QNameParts(String prefix, String namespaceUri, String localName) {
+            this.prefix = prefix;
+            this.namespaceUri = namespaceUri;
+            this.localName = localName;
+        }
+
+        public String prefix() {
+            return prefix;
+        }
+
+        public String namespaceUri() {
+            return namespaceUri;
+        }
+
+        public String localName() {
+            return localName;
+        }
+
         public String getFullUri() {
-            if (namespaceUri == null) return localName;
-            return namespaceUri + "#" + localName;
+            if (namespaceUri == null) {
+                return localName;
+            }
+            return namespaceUri.concat("|").concat(localName);
         }
     }
 }

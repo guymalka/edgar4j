@@ -31,24 +31,7 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("Edgar4j API")
                         .version("1.0.0")
-                        .description("""
-                                Edgar4j is a Java-based application for fetching, parsing, and analyzing
-                                SEC EDGAR filings. This API provides access to company information,
-                                SEC filings, and parsed form data including Form 4, Form 13F, Form 13D/G,
-                                Form 8-K, Form 3, Form 5, Form 6-K, and Form 20-F.
-
-                                ## Features
-                                - Company search and management
-                                - SEC filing retrieval and parsing
-                                - Insider trading data (Form 4)
-                                - Institutional holdings (Form 13F)
-                                - Beneficial ownership (Form 13D/G)
-                                - Current reports (Form 8-K)
-                                - Ownership forms (Form 3, 5)
-                                - Foreign issuer reports (Form 6-K, 20-F)
-                                - Download job management
-                                - Dashboard statistics
-                                """)
+                        .description("Edgar4j is a Java-based application for fetching, parsing, and analyzing SEC EDGAR filings. This API provides access to company information, SEC filings, and parsed form data including Form 4, Form 13F, Form 13D/G, Form 8-K, Form 3, Form 5, Form 6-K, and Form 20-F. Features: Company search and management, SEC filing retrieval and parsing, Insider trading data, Institutional holdings, Beneficial ownership, Current reports, Ownership forms, Foreign issuer reports, Download job management, Dashboard statistics")
                         .contact(new Contact()
                                 .name("Edgar4j")
                                 .url("https://github.com/edgar4j/edgar4j"))

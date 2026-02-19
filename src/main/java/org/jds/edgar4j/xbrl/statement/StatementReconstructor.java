@@ -374,22 +374,28 @@ public class StatementReconstructor {
     private boolean isRelevantForStatement(String concept, StatementType statementType) {
         String lower = concept.toLowerCase();
 
-        return switch (statementType) {
-            case BALANCE_SHEET -> lower.contains("asset") || lower.contains("liabilit")
-                    || lower.contains("equity") || lower.contains("cash")
-                    || lower.contains("receivable") || lower.contains("payable")
-                    || lower.contains("inventory") || lower.contains("property");
-            case INCOME_STATEMENT -> lower.contains("revenue") || lower.contains("income")
-                    || lower.contains("expense") || lower.contains("cost")
-                    || lower.contains("profit") || lower.contains("loss")
-                    || lower.contains("earnings") || lower.contains("tax");
-            case CASH_FLOW -> lower.contains("cash") || lower.contains("payment")
-                    || lower.contains("proceed") || lower.contains("operating")
-                    || lower.contains("investing") || lower.contains("financing");
-            case STOCKHOLDERS_EQUITY -> lower.contains("equity") || lower.contains("stock")
-                    || lower.contains("dividend") || lower.contains("share")
-                    || lower.contains("comprehensive");
-        };
+        switch (statementType) {
+            case BALANCE_SHEET:
+                return lower.contains("asset") || lower.contains("liabilit")
+                        || lower.contains("equity") || lower.contains("cash")
+                        || lower.contains("receivable") || lower.contains("payable")
+                        || lower.contains("inventory") || lower.contains("property");
+            case INCOME_STATEMENT:
+                return lower.contains("revenue") || lower.contains("income")
+                        || lower.contains("expense") || lower.contains("cost")
+                        || lower.contains("profit") || lower.contains("loss")
+                        || lower.contains("earnings") || lower.contains("tax");
+            case CASH_FLOW:
+                return lower.contains("cash") || lower.contains("payment")
+                        || lower.contains("proceed") || lower.contains("operating")
+                        || lower.contains("investing") || lower.contains("financing");
+            case STOCKHOLDERS_EQUITY:
+                return lower.contains("equity") || lower.contains("stock")
+                        || lower.contains("dividend") || lower.contains("share")
+                        || lower.contains("comprehensive");
+            default:
+                return false;
+        }
     }
 
     private boolean isTotalConcept(String concept) {

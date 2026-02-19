@@ -683,10 +683,13 @@ public class XbrlParser {
      * Detect XBRL format from document type.
      */
     private XbrlInstance.XbrlFormat detectFormat(ErrorRecoveryParser.DocumentType docType) {
-        return switch (docType) {
-            case INLINE_XBRL -> XbrlInstance.XbrlFormat.INLINE_XBRL;
-            case XBRL_XML -> XbrlInstance.XbrlFormat.XBRL;
-            default -> XbrlInstance.XbrlFormat.UNKNOWN;
-        };
+        switch (docType) {
+            case INLINE_XBRL:
+                return XbrlInstance.XbrlFormat.INLINE_XBRL;
+            case XBRL_XML:
+                return XbrlInstance.XbrlFormat.XBRL;
+            default:
+                return XbrlInstance.XbrlFormat.UNKNOWN;
+        }
     }
 }

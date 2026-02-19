@@ -116,27 +116,45 @@ public class DownloadJobServiceImpl implements DownloadJobService {
     }
 
     private JobType mapToJobType(DownloadRequest.DownloadType type) {
-        return switch (type) {
-            case TICKERS_ALL -> JobType.TICKERS_ALL;
-            case TICKERS_NYSE -> JobType.TICKERS_NYSE;
-            case TICKERS_NASDAQ -> JobType.TICKERS_NASDAQ;
-            case TICKERS_MF -> JobType.TICKERS_MF;
-            case SUBMISSIONS -> JobType.SUBMISSIONS;
-            case BULK_SUBMISSIONS -> JobType.BULK_SUBMISSIONS;
-            case BULK_COMPANY_FACTS -> JobType.BULK_COMPANY_FACTS;
-        };
+        switch (type) {
+            case TICKERS_ALL:
+                return JobType.TICKERS_ALL;
+            case TICKERS_NYSE:
+                return JobType.TICKERS_NYSE;
+            case TICKERS_NASDAQ:
+                return JobType.TICKERS_NASDAQ;
+            case TICKERS_MF:
+                return JobType.TICKERS_MF;
+            case SUBMISSIONS:
+                return JobType.SUBMISSIONS;
+            case BULK_SUBMISSIONS:
+                return JobType.BULK_SUBMISSIONS;
+            case BULK_COMPANY_FACTS:
+                return JobType.BULK_COMPANY_FACTS;
+            default:
+                throw new IllegalArgumentException("Unknown type: " + type);
+        }
     }
 
     private String getJobDescription(JobType type, String cik) {
-        return switch (type) {
-            case TICKERS_ALL -> "Download All Company Tickers";
-            case TICKERS_NYSE -> "Download NYSE Tickers";
-            case TICKERS_NASDAQ -> "Download NASDAQ Tickers";
-            case TICKERS_MF -> "Download Mutual Fund Tickers";
-            case SUBMISSIONS -> "Download Submissions for CIK " + cik;
-            case BULK_SUBMISSIONS -> "Download Bulk Submissions Archive";
-            case BULK_COMPANY_FACTS -> "Download Company Facts XBRL Archive";
-        };
+        switch (type) {
+            case TICKERS_ALL:
+                return "Download All Company Tickers";
+            case TICKERS_NYSE:
+                return "Download NYSE Tickers";
+            case TICKERS_NASDAQ:
+                return "Download NASDAQ Tickers";
+            case TICKERS_MF:
+                return "Download Mutual Fund Tickers";
+            case SUBMISSIONS:
+                return "Download Submissions for CIK " + cik;
+            case BULK_SUBMISSIONS:
+                return "Download Bulk Submissions Archive";
+            case BULK_COMPANY_FACTS:
+                return "Download Company Facts XBRL Archive";
+            default:
+                return "Unknown Job Type";
+        }
     }
 
     private DownloadJobResponse toDownloadJobResponse(DownloadJob job) {
