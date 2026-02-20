@@ -10,7 +10,7 @@ spring:
       fail-fast: false
   data:
     mongodb:
-      uri: ${SPRING_DATA_MONGODB_URI:mongodb://admin:admin123@localhost:27017/edgar?authSource=admin}
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://admin:admin123@host.docker.internal:27017/edgar?authSource=admin}
       database: ${MONGODB_DATABASE:edgar}
       auto-index-creation: ${MONGODB_AUTO_INDEX_CREATION:true}
     elasticsearch:

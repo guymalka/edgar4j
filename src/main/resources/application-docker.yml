@@ -18,12 +18,15 @@ spring:
   data:
     mongodb:
       uri: mongodb://admin:admin123@mongodb:27017/edgar?authSource=admin
+      auto-index-creation: false
 
 edgar4j:
   sec:
     user-agent: ${SEC_USER_AGENT:Edgar4j/1.0 (contact@example.com)}
   security:
-    enabled: ${EDGAR4J_SECURITY_ENABLED:true}
+    enabled: ${EDGAR4J_SECURITY_ENABLED:false}
+    username: ${EDGAR4J_SECURITY_USERNAME:admin}
+    password: ${EDGAR4J_SECURITY_PASSWORD:admin123}
   jobs:
     ticker-sync:
       enabled: true
