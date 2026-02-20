@@ -1,10 +1,8 @@
 {
   "build": {
-    "builder": "dockerfile",
-    "dockerfile": "docker/Dockerfile.backend"
+    "builder": "dockerfile"
   },
   "deploy": {
-    "startCommand": "java $JAVA_OPTS -jar app.jar",
     "healthcheckPath": "/actuator/health",
     "healthcheckTimeout": 30
   }
