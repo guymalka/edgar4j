@@ -5,7 +5,6 @@
   },
   "deploy": {
     "healthcheckPath": "/actuator/health",
-    "healthcheckTimeout": 30,
-    "startCommand": "java $JAVA_OPTS -jar app.jar"
+    "healthcheckTimeout": 30
   }
 }
