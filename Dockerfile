@@ -39,5 +39,9 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
 # JVM tuning for containers  
 ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:InitialRAMPercentage=50.0"
 
+# Activate docker profile and configure MongoDB
+ENV SPRING_PROFILES_ACTIVE=docker
+ENV SPRING_DATA_MONGODB_URI=mongodb://admin:admin123@mongodb:27017/edgar?authSource=admin
+
 # Run the application
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
